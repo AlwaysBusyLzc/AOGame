@@ -37,8 +37,12 @@ namespace AO
                     {
                         currentScene = Scene.CurrentScene;
                         newUnit = currentScene.AddChildWithId<Actor>(unitInfo.UnitId);
-                        Actor.Main = newUnit as Actor;
                         newUnit.AddComponent<ActorControlComponent>();
+                        
+                        Actor.Main = newUnit as Actor;
+                        Actor.Main.AddComponent<AttributeHPComponent>();
+                        Actor.Main.GetComponent<AttributeHPComponent>().AvailableValue = 100;
+                        Actor.Main.GetComponent<AttributeHPComponent>().AttributeValue = 100;
                     }
                     else
                     {
@@ -51,6 +55,9 @@ namespace AO
                     if (source is ExecutionEditorModeComponent mode)
                     {
                         mode.BossUnit = newUnit as Actor;
+                        mode.BossUnit.AddComponent<AttributeHPComponent>();
+                        mode.BossUnit.GetComponent<AttributeHPComponent>().AvailableValue = 100;
+                        mode.BossUnit.GetComponent<AttributeHPComponent>().AttributeValue = 100;
                     }
                 }
 

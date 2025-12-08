@@ -41,6 +41,7 @@ namespace AO
                     self.AddComponent<ExecutionEditorModeComponent>();
                 }
 
+                // 加载所有配置表
                 var tables = new cfg.Tables(LoadByteBuf);
                 var itemcfg = tables.TbItems.Get(10000);
                 CfgTables.Tables = tables;
