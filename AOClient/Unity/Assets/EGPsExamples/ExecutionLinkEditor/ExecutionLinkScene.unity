@@ -826,9 +826,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1e558b59556bb4785fef63a14faf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContentTrm: {fileID: 278962957}
-  SkillBtn: {fileID: 764509740}
-  PopupBtn: {fileID: 0}
+  ContentTrm: {fileID: 310884065}
+  SkillBtn: {fileID: 2090857830}
+  PopupBtn: {fileID: 764509740}
   RefreshBtn: {fileID: 37949717}
 --- !u!1001 &234653498
 PrefabInstance:
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 428595450}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6996,20 +6996,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ec9123ab7d24b4486b049f85032510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClipRect: {fileID: 0}
-  ClipRectColor: {r: 1, g: 1, b: 1, a: 1}
-  ExecutionClipRectColor: {r: 1, g: 1, b: 1, a: 1}
-  ParticleEffectRectColor: {r: 1, g: 1, b: 1, a: 1}
-  ClipTypeBar: {fileID: 0}
-  AnimationClipBarColor: {r: 1, g: 1, b: 1, a: 1}
-  AudioClipBarColor: {r: 1, g: 1, b: 1, a: 1}
-  ExecutionClipBarColor: {r: 1, g: 1, b: 1, a: 1}
-  ParticleEffectBarColor: {r: 1, g: 1, b: 1, a: 1}
-  SliderLeft: {fileID: 0}
-  SliderRight: {fileID: 0}
-  ActionImg1: {fileID: 0}
-  ActionImg2: {fileID: 0}
-  LeftLine: {fileID: 0}
+  ClipRect: {fileID: 1313651697}
+  ClipRectColor: {r: 0.34117648, g: 0.38039216, b: 0.4509804, a: 1}
+  ExecutionClipRectColor: {r: 0.17254902, g: 0.1882353, b: 0.21568628, a: 1}
+  ParticleEffectRectColor: {r: 0.2627451, g: 0.5647059, b: 0.32156864, a: 1}
+  ClipTypeBar: {fileID: 651014091}
+  AnimationClipBarColor: {r: 0.14117648, g: 0.33333334, b: 0.5372549, a: 1}
+  AudioClipBarColor: {r: 1, g: 0.63529414, b: 0, a: 1}
+  ExecutionClipBarColor: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 1}
+  ParticleEffectBarColor: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 1}
+  SliderLeft: {fileID: 1611515747}
+  SliderRight: {fileID: 241649510}
+  ActionImg1: {fileID: 1778778154}
+  ActionImg2: {fileID: 1782893158}
+  LeftLine: {fileID: 173830717}
   TrackClipData: {fileID: 0}
 --- !u!1 &1560950434
 GameObject:
