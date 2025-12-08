@@ -6,14 +6,14 @@ var AO = CS.AO;
 var AOGame = CS.AO.AOGame;
 function onEnter() {
     var pack = "Loading";
-    var asset = AO.UIUtils.LoadPackage(pack);
+    var asset = AO.UIUtils.LoadPackage(AO.AOGame.UIStage, pack);
     var window = UI_LoadingWindow.createInstance();
     window.showWindow(UIRoot.FrontUIView);
     let modeComp = AOGame.ClientApp.GetComponentof(AO.LoadingModeComponent);
     window.g_loadingProgressBar.value = modeComp.LoadingProgress;
     modeComp.AddDisposeAction(function () {
         window.dispose();
-        AO.UIUtils.RemovePackage(pack);
+        AO.UIUtils.RemovePackage(AO.AOGame.UIStage, pack);
         asset.Dispose();
     });
 }

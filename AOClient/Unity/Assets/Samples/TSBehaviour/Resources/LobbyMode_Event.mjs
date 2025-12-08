@@ -17,14 +17,14 @@ var AO = CS.AO;
 var AOGame = CS.AO.AOGame;
 function onEnter() {
     var pack = "Login";
-    var asset = AO.UIUtils.LoadPackage(pack);
+    var asset = AO.UIUtils.LoadPackage(AO.AOGame.UIStage, pack);
     var window = LoginFactory.create_UI_LobbyWindow();
     window.showWindow(UIRoot.MiddUIView);
     window.g_enterBtn.onClick.Add(enterMap);
     let modeComp = AOGame.ClientApp.GetComponent(ptypeof(AO.LobbyModeComponent));
     modeComp.AddDisposeAction(function () {
         window.dispose();
-        AO.UIUtils.RemovePackage("Login");
+        AO.UIUtils.RemovePackage(AO.AOGame.UIStage, "Login");
         asset.Dispose();
     });
 }

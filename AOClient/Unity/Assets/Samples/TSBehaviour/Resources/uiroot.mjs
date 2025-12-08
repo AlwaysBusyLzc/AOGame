@@ -8,7 +8,7 @@ export default class UIRoot {
         UIRoot.inst = this;
         fgui.UIPackage.unloadBundleByFGUI = false;
         let groot = fgui.GRoot.inst;
-        let asset = AO.UIUtils.LoadPackage("Common");
+        let asset = AO.UIUtils.LoadPackage(AO.AOGame.UIStage, "Common");
         var uirootObj = fgui.UIPackage.CreateObject("Common", "UIRoot");
         groot.AddChild(uirootObj);
         uirootObj.MakeFullScreen();

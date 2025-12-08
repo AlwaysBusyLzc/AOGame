@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -827,10 +826,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1e558b59556bb4785fef63a14faf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContentTrm: {fileID: 0}
-  SkillBtn: {fileID: 0}
+  ContentTrm: {fileID: 278962957}
+  SkillBtn: {fileID: 764509740}
   PopupBtn: {fileID: 0}
-  RefreshBtn: {fileID: 0}
+  RefreshBtn: {fileID: 37949717}
 --- !u!1001 &234653498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1647,7 +1646,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 428595450}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2264,20 +2263,20 @@ MonoBehaviour:
   SkillTimeText: {fileID: 0}
   SkillNameText: {fileID: 0}
   SkillDescText: {fileID: 0}
-  SkillTimeImage: {fileID: 0}
-  TimeCursorTrm: {fileID: 0}
-  FrameInfosContentTrm: {fileID: 0}
-  FrameTrm: {fileID: 0}
-  FrameTextTrm: {fileID: 0}
-  TrackListTrm: {fileID: 0}
-  TrackTrm: {fileID: 0}
-  RightContextTrm: {fileID: 0}
-  NewExecutionBtn: {fileID: 0}
-  AddClipBtn: {fileID: 0}
-  SaveBtn: {fileID: 0}
-  DeleteClipBtn: {fileID: 0}
+  SkillTimeImage: {fileID: 1434687227}
+  TimeCursorTrm: {fileID: 1748615969}
+  FrameInfosContentTrm: {fileID: 1615837825}
+  FrameTrm: {fileID: 414883871}
+  FrameTextTrm: {fileID: 90235588}
+  TrackListTrm: {fileID: 2037703537}
+  TrackTrm: {fileID: 2072207736}
+  RightContextTrm: {fileID: 278962957}
+  NewExecutionBtn: {fileID: 464035037}
+  AddClipBtn: {fileID: 942808204}
+  SaveBtn: {fileID: 955907081}
+  DeleteClipBtn: {fileID: 1262407932}
   PauseToggle: {fileID: 0}
-  PlayButton: {fileID: 0}
+  PlayButton: {fileID: 890127652}
   ReloadButton: {fileID: 0}
   StepBtn: {fileID: 0}
   ContentTrm: {fileID: 0}
@@ -9020,6 +9019,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -9832,7 +9832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860105633808227989, guid: c6613397838fabc43b029d1e060d3967, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6613397838fabc43b029d1e060d3967, type: 3}

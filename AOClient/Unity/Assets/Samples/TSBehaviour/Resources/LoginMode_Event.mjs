@@ -18,14 +18,14 @@ import UIFunctions from "../../ui_base/ui_functions.mjs";
 import UI_LoginWindow from "../../ui_scripts/ui_windows/Login/UI_LoginWindow.mjs";
 function onEnter() {
     var pack = "Login";
-    var asset = AO.UIUtils.LoadPackage(pack);
+    var asset = AO.UIUtils.LoadPackage(AO.AOGame.UIStage, pack);
     var loginWindow = LoginFactory.create_UI_LoginWindow();
     loginWindow.showWindow(UIRoot.MiddUIView);
     loginWindow.g_loginBtn.onClick.Add(login);
     var modeComp = AOGame.ClientApp.GetComponentof(AO.LoginModeComponent);
     modeComp.AddDisposeAction(function () {
         loginWindow.dispose();
-        AO.UIUtils.RemovePackage("Login");
+        AO.UIUtils.RemovePackage(AO.AOGame.UIStage, "Login");
         asset.Dispose();
     });
 }

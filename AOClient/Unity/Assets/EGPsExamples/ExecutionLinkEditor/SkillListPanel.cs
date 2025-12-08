@@ -22,7 +22,7 @@ namespace EGamePlay
             Instance = this;
             SkillBtn.transform.SetParent(null);
             RefreshList();
-            PopupBtn.onClick.AddListener(Popup);
+            // PopupBtn.onClick.AddListener(Popup);
             RefreshBtn.onClick.AddListener(RefreshList);
         }
 

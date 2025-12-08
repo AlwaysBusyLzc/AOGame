@@ -22,16 +22,15 @@ namespace AO
                 Log.Debug("ClientAppAwakeSystem Awake");
 
                 AOGame.ClientApp = self;
+                AOGame.UIStage = self.AddChild<UIStage>();
+                // AOGame.UIStage.LoadPackageAsync("Common").Coroutine();
 
                 Process_PuerTsSetup.Execute(self);
 
                 EGamePlay.Entity.EnableLog = false;
                 EGamePlay.MasterEntity.Create();
                 EGamePlay.MasterEntity.Instance.AddChild<CombatContext>();
-
-                AOGame.UIStage = self.AddChild<UIStage>();
-                AOGame.UIStage.LoadPackageAsync("Common").Coroutine();
-
+                
                 if (SceneManager.GetActiveScene().name == "Init")
                 {
                     self.AddComponent<LoginModeComponent>();

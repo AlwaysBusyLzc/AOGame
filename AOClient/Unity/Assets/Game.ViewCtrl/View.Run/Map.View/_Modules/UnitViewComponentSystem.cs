@@ -43,7 +43,7 @@ namespace AO
                 //Log.Debug($"UnitViewComponentSystem {self.Parent.MapUnit().Name}");
                 if (self.Parent.MapUnit().Name == "Execution_1008_Expllosion")
                 {
-                    var renderAsset = AssetUtils.LoadAssetWithParentAsync("Explosion.prefab", null);
+                    var renderAsset = AssetUtils.LoadAssetWithParentAsync("Explosion.prefab", self);
                     await renderAsset.LoadAsync();
                     //await renderAsset.Task;
                     var renderObj = GameObject.Instantiate(renderAsset.GameObjectPrefab, self.UnitObj.transform);
@@ -53,7 +53,7 @@ namespace AO
                 }
                 if (self.Parent.MapUnit().Name == "Execution_1002")
                 {
-                    var renderAsset = AssetUtils.LoadAssetWithParentAsync("Fire.prefab", null);
+                    var renderAsset = AssetUtils.LoadAssetWithParentAsync("Fire.prefab", self);
                     await renderAsset.LoadAsync();
                     var renderObj = GameObject.Instantiate(renderAsset.GameObjectPrefab, self.UnitObj.transform);
                     renderObj.transform.localPosition = Vector3.zero;
