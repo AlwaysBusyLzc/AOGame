@@ -90,18 +90,21 @@
                 if (launcherType == "Distribution")
                 {
                     // 分布式应用进程模式暂未实现（一个App一个进程）
-                    return;
+                    // return;
                     AOGame.IsDistribution = true;
 
                     var machineIp = "192.168.0.1";
-                    var appConfigs = File.ReadAllLines($"../ServerConfigs/MyServerApps/{machineIp}.txt");
+                    var appConfigs = File.ReadAllLines($"../AppConfigs/MyServerApps/{machineIp}.txt");
                     foreach (var item in appConfigs)
                     {
                         var arr = item.Split(':');
                         var pid = int.Parse(arr[0]);
                         var appType = arr[1];
                         var appPort = int.Parse(arr[2]);
-                        ProcessHelper.Run("dotnet.exe", item);
+                        // ProcessHelper.Run("dotnet.exe", item);
+                        
+                        Log.Console($"LauncherAppSystem.AwakeHandler.Awake: pid={pid}, appType={appType}, appPort={appPort}");
+                        ProcessHelper.Run("ServerApp.exe", item);
                     }
                 }
             }
