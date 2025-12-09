@@ -53,9 +53,9 @@ namespace EGamePlay
                 return;
             }
 
-            var timeData = TrackClipData.GetClipTime();
-            timeData.StartTime = SliderLeft.value * TrackClipData.TotalTime;
-            timeData.EndTime = SliderRight.value * TrackClipData.TotalTime;
+            // var timeData = TrackClipData.GetClipTime();
+            TrackClipData.StartTime = SliderLeft.value * TrackClipData.TotalTime;
+            TrackClipData.EndTime = SliderRight.value * TrackClipData.TotalTime;
             var s = ClipRect.sizeDelta;
             var x = SliderLeft.value * panelWidth;
             var y = SliderRight.value * panelWidth;
@@ -95,6 +95,7 @@ namespace EGamePlay
             {
                 ClipRect.GetComponent<Image>().color = ExecutionClipRectColor;
                 ClipTypeBar.color = ExecutionClipBarColor;
+                
                 var executeType = TrackClipData.CollisionExecuteData.MoveType;
                 if (executeType == CollisionMoveType.PathFly || executeType == CollisionMoveType.SelectedDirectionPathFly)
                 {
@@ -117,18 +118,25 @@ namespace EGamePlay
             entry.callback.AddListener(PointerClick);
             trigger.triggers.Add(entry);
 
-            if (TrackClipType != ExecuteClipType.ActionEvent
-                && TrackClipType != ExecuteClipType.ParticleEffect
-                && TrackClipType != ExecuteClipType.CollisionExecute
-                && TrackClipType != ExecuteClipType.Animation
+            // 默认禁用slider
+            SliderLeft.enabled = false;
+            SliderRight.enabled = false;
+            
+            if (TrackClipType == ExecuteClipType.ActionEvent
+                || TrackClipType == ExecuteClipType.ParticleEffect
+                || TrackClipType == ExecuteClipType.CollisionExecute
+                || TrackClipType == ExecuteClipType.Animation
+                || TrackClipType == ExecuteClipType.Audio
                 )
             {
-                SliderLeft.enabled = false;
-                SliderRight.enabled = false;
-                if (TrackClipType != ExecuteClipType.Animation)
-                {
-                    return;
-                }
+                SliderLeft.enabled = true;
+                SliderRight.enabled = true;
+            }
+            
+            // 下面只处理动画和音频
+            if (TrackClipType != ExecuteClipType.Animation && TrackClipType != ExecuteClipType.Audio)
+            {
+                return;
             }
 
             entry = new EventTrigger.Entry();
