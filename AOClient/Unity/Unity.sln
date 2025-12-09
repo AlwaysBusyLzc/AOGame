@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.tencent.puerts.core", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Loader", "Unity.Loader.csproj", "{32b76b98-b8f4-f864-d1f9-50cf255042d8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngameDebugConsole.Runtime", "IngameDebugConsole.Runtime.csproj", "{f33a4f4e-838d-b35c-ceb7-3f8a7ab9a9af}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{03938ccd-4b40-8dfb-6b9b-21988d5cac0a}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngameDebugConsole.Runtime", "IngameDebugConsole.Runtime.csproj", "{f33a4f4e-838d-b35c-ceb7-3f8a7ab9a9af}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Model", "Game.Model.csproj", "{e7794a0b-6659-ec9e-3815-959490e6c4a6}"
 EndProject
@@ -60,10 +60,10 @@ Global
 		{b109c0d3-f2c9-dc4a-68ff-0dba8fe7f6a7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32b76b98-b8f4-f864-d1f9-50cf255042d8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32b76b98-b8f4-f864-d1f9-50cf255042d8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{f33a4f4e-838d-b35c-ceb7-3f8a7ab9a9af}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{f33a4f4e-838d-b35c-ceb7-3f8a7ab9a9af}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03938ccd-4b40-8dfb-6b9b-21988d5cac0a}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{03938ccd-4b40-8dfb-6b9b-21988d5cac0a}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f33a4f4e-838d-b35c-ceb7-3f8a7ab9a9af}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f33a4f4e-838d-b35c-ceb7-3f8a7ab9a9af}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{e7794a0b-6659-ec9e-3815-959490e6c4a6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{e7794a0b-6659-ec9e-3815-959490e6c4a6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c6e61163-200a-3b38-320b-694068de37a5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

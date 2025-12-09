@@ -47,8 +47,8 @@
     <Compile Include="Assets\Samples\Editor\04_NodeTSCAndHotReload\NodeTSCAndHotReload.cs" />
     <Compile Include="Assets\Samples\Editor\01_WrapperGenerate\ExamplesCfg.cs" />
     <Compile Include="Assets\Samples\Editor\03_ConsoleRedirect\ConsoleRedirect.cs" />
-    <Compile Include="Assets\Samples\Editor\01_WrapperGenerate\PuertsConfig.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Editor\CreateLocatorHere.cs" />
+    <Compile Include="Assets\Samples\Editor\01_WrapperGenerate\PuertsConfig.cs" />
     <None Include="Assets\Samples\Editor\03_ConsoleRedirect\Resources\puerts\console-track.js.txt" />
     <None Include="Assets\Samples\Editor\03_ConsoleRedirect\Resources\puerts\puerts-source-map-support.js.txt" />
     <Reference Include="UnityEngine">
