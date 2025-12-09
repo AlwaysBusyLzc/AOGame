@@ -254,6 +254,10 @@ namespace EGamePlay
                 {
                     self.LoadCurrentSkillParticleEffect(item);
                 }
+                if (item.ExecuteClipType == ExecuteClipType.Audio)
+                {
+                    self.LoadCurrentSkillSound(item);
+                }
             }
             //self.LoadCurrentSkillAction(cast.HitAction, "action");
             //self.LoadCurrentSkillAction(new int[] { 500 }, "buff");
@@ -326,14 +330,11 @@ namespace EGamePlay
         {
             var self = this;
             var anim = "anim";
-            if (string.IsNullOrEmpty(anim))
-            {
-                return;
-            }
             if (trackClipData.AnimationData.AnimationClip != null)
             {
                 anim = trackClipData.AnimationData.AnimationClip.name;
             }
+            
             var animTrack = GameObject.Instantiate(self.TrackTrm);
             animTrack.SetParent(self.TrackListTrm);
             animTrack.GetComponentInChildren<Text>().text = $"animation clip : {anim}";
@@ -353,6 +354,7 @@ namespace EGamePlay
             {
                 name = trackClipData.ParticleEffectData.ParticleEffect.name;
             }
+            
             var animTrack = GameObject.Instantiate(self.TrackTrm);
             animTrack.SetParent(self.TrackListTrm);
             animTrack.GetComponentInChildren<Text>().text = $"{name}";
@@ -363,25 +365,26 @@ namespace EGamePlay
             trackClip.SetClipType(trackClipData);
         }
 
-        void LoadCurrentSkillSound()
+        void LoadCurrentSkillSound(ExecuteClipData trackClipData)
         {
             var self = this;
             //var cast = self.CurrentSkillConfig;
             var sound = "sound";
-            if (string.IsNullOrEmpty(sound))
+            if (trackClipData.AudioData.AudioClip != null)
             {
-                return;
+                sound = trackClipData.AudioData.AudioClip.name;
             }
+            
             var audio = Load<AudioClip>(sound);
             var animTrack = GameObject.Instantiate(self.TrackTrm);
             animTrack.SetParent(self.TrackListTrm);
             animTrack.GetComponentInChildren<Text>().text = $"{sound}";
 
-            var trackClipData = new ExecuteClipData();
+            // var trackClipData = new ExecuteClipData();
+            // trackClipData.ExecuteClipType = ExecuteClipType.Audio;
+            // trackClipData.AudioData = new AudioData();
+            // trackClipData.AudioData.AudioClip = audio;
             trackClipData.TotalTime = self.TotalTime;
-            trackClipData.ExecuteClipType = ExecuteClipType.Audio;
-            trackClipData.AudioData = new AudioData();
-            trackClipData.AudioData.AudioClip = audio;
             trackClipData.StartTime = 0;
             trackClipData.EndTime = audio.length;
 
@@ -424,7 +427,7 @@ namespace EGamePlay
             SkillTimeImage.fillAmount = 0;
             CurrentTime = 0;
             IsPlaying = true;
-            if (CurrentExecutionObject.AbilityId > 0 && HeroEntity.GetComponent<AbilityComponent>().IdSkills.TryGetValue(CurrentExecutionObject.AbilityId, out var skillAbility))
+            if (CurrentExecutionObject.AbilityId > 0 && HeroEntity.GetComponent<AbilityComponent>().IdSkills.TryGetValue(CurrentExecutionObject.AbilityId, out SkillAbility skillAbility))
             {
                 skillAbility.LoadExecution();
                 if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Target)
@@ -440,30 +443,31 @@ namespace EGamePlay
                 }
                 if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Point)
                 {
+                    // 或者改成鼠标所在点?
                     HeroEntity.GetComponent<SpellComponent>().SpellWithPoint(skillAbility, BossEntity.Position);
                 }
             }
             else
             {
                 HeroEntity.ModelTrans.localRotation = Quaternion.LookRotation(BossEntity.Position - HeroEntity.Position);
-                //var skillAbility = Hero.Instance.CombatEntity.AttachSkill(new SkillConfigObject() { Id = 9999 });
+                var skillAb = HeroEntity.AttachSkill(new SkillConfigObject() { Id = CurrentExecutionObject.AbilityId });
                 if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Target)
                 {
-                    var execution = HeroEntity.AddChild<SkillExecution>(null);
+                    var execution = HeroEntity.AddChild<SkillExecution>(skillAb);
                     execution.ExecutionObject = CurrentExecutionObject;
                     execution.InputTarget = BossEntity;
                     execution.LoadExecutionEffects();
                     execution.BeginExecute();
-                    execution.AddComponent<UpdateComponent>();
+                    // execution.AddComponent<UpdateComponent>();
                 }
                 if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Point)
                 {
-                    var execution = HeroEntity.AddChild<SkillExecution>(null);
+                    var execution = HeroEntity.AddChild<SkillExecution>(skillAb);
                     execution.ExecutionObject = CurrentExecutionObject;
                     execution.InputPoint = BossEntity.Position;
                     execution.LoadExecutionEffects();
                     execution.BeginExecute();
-                    execution.AddComponent<UpdateComponent>();
+                    // execution.AddComponent<UpdateComponent>();
                 }
             }
             //#endif
