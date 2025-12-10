@@ -46,8 +46,8 @@
     <Compile Include="Assets\Codes\Loader\Helper\AssetsBundleHelper.cs" />
     <Compile Include="Assets\Codes\Loader\AOP\Attributes\Event\IBeforeEventInvokedAspect.cs" />
     <Compile Include="Assets\Codes\Loader\AOP\Attributes\Property\IPropertySetAspect.cs" />
-    <Compile Include="Assets\Codes\Loader\AOP\Attributes\Method\IMethodExceptionThrownAspect.cs" />
     <Compile Include="Assets\Codes\Loader\AOP\Attributes\Property\IPropertyGetEnterAspect.cs" />
+    <Compile Include="Assets\Codes\Loader\AOP\Attributes\Method\IMethodExceptionThrownAspect.cs" />
     <Compile Include="Assets\Codes\Loader\AOP\Processing\AOPProcessor.cs" />
     <Compile Include="Assets\Codes\Loader\Plugins\HybridCLR\Generated\AOTGenericReferences.cs" />
     <Compile Include="Assets\Codes\Loader\BundleFile\ArtFilesUpdate\ArtFilesUpdater.cs" />

@@ -919,6 +919,10 @@
       <Project>{56df1de4-7636-2075-3b3d-021f8dba6bfa}</Project>
       <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
     </ProjectReference>
+    <ProjectReference Include="Animancer.FSM.csproj">
+      <Project>{774b51b6-b901-b97e-d593-35721140fea6}</Project>
+      <Name>Animancer.FSM</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Loader.csproj">
       <Project>{32b76b98-b8f4-f864-d1f9-50cf255042d8}</Project>
       <Name>Unity.Loader</Name>
@@ -926,6 +930,10 @@
     <ProjectReference Include="Unity.Editor.csproj">
       <Project>{041131cd-3018-19b1-81b6-5dbee2467ffb}</Project>
       <Name>Unity.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Animancer.csproj">
+      <Project>{159e65f6-d363-1a6d-ec57-6db30da1b98f}</Project>
+      <Name>Animancer</Name>
     </ProjectReference>
     <ProjectReference Include="com.tencent.puerts.core.csproj">
       <Project>{b109c0d3-f2c9-dc4a-68ff-0dba8fe7f6a7}</Project>

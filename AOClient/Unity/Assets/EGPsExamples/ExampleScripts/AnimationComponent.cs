@@ -6,13 +6,13 @@ using DG.Tweening;
 
 public class AnimationComponent : MonoBehaviour
 {
-    //public Animancer.AnimancerComponent AnimancerComponent;
+    public Animancer.AnimancerComponent AnimancerComponent;
     public AnimationClip IdleAnimation;
     public AnimationClip RunAnimation;
     public AnimationClip JumpAnimation;
     public AnimationClip AttackAnimation;
     public AnimationClip SkillAnimation;
-    public AnimationClip StunAnimation;
+    public AnimationClip StunAnimation; 
     public AnimationClip DamageAnimation;
     public AnimationClip DeadAnimation;
     public AnimationClip[] AnimationClips;
@@ -21,41 +21,41 @@ public class AnimationComponent : MonoBehaviour
     
     private void Start()
     {
-        //AnimancerComponent.Animator.fireEvents = false;
-        //AnimancerComponent.States.CreateIfNew(IdleAnimation);
-        //AnimancerComponent.States.CreateIfNew(RunAnimation);
-        //AnimancerComponent.States.CreateIfNew(JumpAnimation);
-        //AnimancerComponent.States.CreateIfNew(AttackAnimation);
-        //AnimancerComponent.States.CreateIfNew(SkillAnimation);
-        //AnimancerComponent.States.CreateIfNew(StunAnimation);
-        //foreach (var item in AnimationClips)
-        //{
-        //    AnimancerComponent.States.CreateIfNew(item);
-        //}
+        AnimancerComponent.Animator.fireEvents = false;
+        AnimancerComponent.States.CreateIfNew(IdleAnimation);
+        AnimancerComponent.States.CreateIfNew(RunAnimation);
+        AnimancerComponent.States.CreateIfNew(JumpAnimation);
+        AnimancerComponent.States.CreateIfNew(AttackAnimation);
+        AnimancerComponent.States.CreateIfNew(SkillAnimation);
+        AnimancerComponent.States.CreateIfNew(StunAnimation);
+        foreach (var item in AnimationClips)
+        {
+            AnimancerComponent.States.CreateIfNew(item);
+        }
     }
 
     public void Play(AnimationClip clip)
     {
-        //var state = AnimancerComponent.States.GetOrCreate(clip);
-        //state.Speed = Speed;
-        //AnimancerComponent.Play(state);
+        var state = AnimancerComponent.States.GetOrCreate(clip);
+        state.Speed = Speed;
+        AnimancerComponent.Play(state);
     }
     
     public void PlayFade(AnimationClip clip)
     {
-        //var state = AnimancerComponent.States.GetOrCreate(clip);
-        //state.Speed = Speed;
-        //AnimancerComponent.Play(state, 0.25f);
+        var state = AnimancerComponent.States.GetOrCreate(clip);
+        state.Speed = Speed;
+        AnimancerComponent.Play(state, 0.25f);
     }
 
     public void TryPlayFade(AnimationClip clip)
     {
-        //var state = AnimancerComponent.States.GetOrCreate(clip);
-        //state.Speed = Speed;
-        //if (AnimancerComponent.IsPlaying(clip))
-        //{
-        //    return;
-        //}
-        //AnimancerComponent.Play(state, 0.25f);
+        var state = AnimancerComponent.States.GetOrCreate(clip);
+        state.Speed = Speed;
+        if (AnimancerComponent.IsPlaying(clip))
+        {
+            return;
+        }
+        AnimancerComponent.Play(state, 0.25f);
     }
 }
