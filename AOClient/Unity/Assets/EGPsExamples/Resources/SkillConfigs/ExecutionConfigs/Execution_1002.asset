@@ -51,7 +51,7 @@ MonoBehaviour:
       normalizedTime: 0.5
       keyPoints: []
   AnimationData:
-    AnimationClip: {fileID: 7400000, guid: 7b5b17e2d42e0424f9c36012595dc9b6, type: 3}
+    AnimationClip: {fileID: 7400000, guid: 01a77bd4c02fbb24081adc25c4773c07, type: 2}
   AudioData:
     AudioClip: {fileID: 0}
   ParticleEffectData:
