@@ -80,7 +80,7 @@ namespace AO
             GameObject.DontDestroyOnLoad(obj);
             self.UnitObj = obj;
             obj.transform.position = self.Parent.MapUnit().Position;
-            self.Parent.AddComponent<UnitAnimationComponent>();
+            // self.Parent.AddComponent<UnitAnimationComponent>();
         }
     }
 }
