@@ -16,11 +16,11 @@
             Actor self;
             if (id == 0)
             {
-                self = app.AddChild<Actor>();
+                self = app.AddChild<Actor, UnitInfo>(null);
             }
             else
             {
-                self = app.AddChildWithId<Actor>(id);
+                self = app.AddChildWithId<Actor, UnitInfo>(id, null);
             }
 
             self.ActorType = actorType;
@@ -43,11 +43,11 @@
             Actor self;
             if (id == 0)
             {
-                self = scene.AddChild<Actor>();
+                self = scene.AddChild<Actor, UnitInfo>(null);
             }
             else
             {
-                self = scene.AddChildWithId<Actor>(id);
+                self = scene.AddChildWithId<Actor, UnitInfo>(id, null);
             }
 
             self.ActorType = actorType;

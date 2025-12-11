@@ -12,9 +12,9 @@
     public static class ActorSystem
     {
         [ObjectSystem]
-        public class AwakeHandler : AwakeSystem<TComp>
+        public class AwakeHandler : AwakeSystem<TComp, UnitInfo>
         {
-            protected override void Awake(TComp self)
+            protected override void Awake(TComp self,  UnitInfo info)
             {
                 //self.AddComponent<UnitLevelComponent>();
                 //self.AddComponent<AttributeHPComponent>();
