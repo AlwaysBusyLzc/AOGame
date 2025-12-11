@@ -38,6 +38,8 @@ public class AnimationComponent : MonoBehaviour
     {
         var state = AnimancerComponent.States.GetOrCreate(clip);
         state.Speed = Speed;
+        // 重置动画时间，确保每次都能重新播放
+        state.Time = 0f;
         AnimancerComponent.Play(state);
     }
     
@@ -45,6 +47,8 @@ public class AnimationComponent : MonoBehaviour
     {
         var state = AnimancerComponent.States.GetOrCreate(clip);
         state.Speed = Speed;
+        // 重置动画时间，确保每次都能重新播放
+        state.Time = 0f;
         AnimancerComponent.Play(state, 0.25f);
     }
 
@@ -56,6 +60,39 @@ public class AnimationComponent : MonoBehaviour
         {
             return;
         }
+        // 重置动画时间，确保每次都能重新播放
+        state.Time = 0f;
         AnimancerComponent.Play(state, 0.25f);
+    }
+
+    
+    /// <summary>
+    /// 播放动画，并在动画结束时执行回调
+    /// </summary>
+    /// <param name="clip">要播放的动画</param>
+    /// <param name="onEnd">动画结束时的回调</param>
+    /// <param name="fadeDuration">淡入淡出时间（0表示立即切换）</param>
+    public void PlayWithCallback(AnimationClip clip, System.Action onEnd, float fadeDuration = 0.25f)
+    {
+        var state = AnimancerComponent.States.GetOrCreate(clip);
+        state.Speed = Speed;
+        
+        // 清除之前的事件
+        state.Events.OnEnd = null;
+        
+        // 绑定动画结束事件
+        state.Events.OnEnd = onEnd;
+        
+        // 重置动画时间，确保每次都能重新播放
+        state.Time = 0f;
+        
+        if (fadeDuration > 0)
+        {
+            AnimancerComponent.Play(state, fadeDuration);
+        }
+        else
+        {
+            AnimancerComponent.Play(state);
+        }
     }
 }

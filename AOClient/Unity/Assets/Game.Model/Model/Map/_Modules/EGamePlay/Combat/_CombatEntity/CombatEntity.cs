@@ -77,8 +77,8 @@ namespace EGamePlay.Combat
             CurrentHealth.Reset();
 
             AttackAbility = GetComponent<AbilityComponent>().AttachAbility<AttackAbility>(null);
+            
             AttackBlockAbility = AttachAction<AttackBlockActionAbility>();
-
             EffectAssignAbility = AttachAction<EffectAssignAbility>();
             SpellAbility = AttachAction<SpellActionAbility>();
             MotionAbility = AttachAction<MotionActionAbility>();

@@ -35,7 +35,7 @@ namespace AO
                 enemyInfo.Position = new Unity.Mathematics.float3 { x = 5, y = 0, z = 0 };
                 EventSystem.Instance.Publish(self, new ET.EventType.CreateUnit() { Unit = enemyInfo });
 
-                await TimeUtils.WaitAsync(500);
+                // await TimeUtils.WaitAsync(500);
 
                 // Actor.Main.AddComponent<AttributeHPComponent>();
                 // Actor.Main.GetComponent<AttributeHPComponent>().AvailableValue = 100;

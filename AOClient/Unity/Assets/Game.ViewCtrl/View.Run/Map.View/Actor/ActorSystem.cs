@@ -11,13 +11,13 @@ namespace AO
     public static class ActorSystem
     {
         [ObjectSystem]
-        public class AwakeHandler : AwakeSystem<TComp>
+        public class AwakeHandler : AwakeSystem<TComp, UnitInfo>
         {
-            protected override void Awake(TComp self)
+            protected override void Awake(TComp self, UnitInfo unitInfo)
             {
                 var combatEntity = CombatContext.Instance.AddChild<CombatEntity>();
                 combatEntity.AddComponent<CombatUnitComponent>().Unit = self;
-                combatEntity.Position = self.MapUnit().Position;
+                combatEntity.Position = self.MapUnit().Position = unitInfo.Position;
                 self.AddComponent<UnitCombatComponent>().CombatEntity = combatEntity;
             }
         }

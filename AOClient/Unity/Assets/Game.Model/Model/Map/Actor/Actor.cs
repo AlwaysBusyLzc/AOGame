@@ -11,7 +11,7 @@ namespace AO
         NonPlayer,/// NPC（Non Player Character）非玩家单位的统称
     }
 
-    public partial class Actor : Entity, IMapUnit, IAwake
+    public partial class Actor : Entity, IMapUnit, IAwake<UnitInfo>
     {
         public ActorType ActorType { get; set; }
 

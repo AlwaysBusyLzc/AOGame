@@ -36,7 +36,7 @@ namespace AO
                     if (args.IsMainAvatar)
                     {
                         currentScene = Scene.CurrentScene;
-                        newUnit = currentScene.AddChildWithId<Actor>(unitInfo.UnitId);
+                        newUnit = currentScene.AddChildWithId<Actor, UnitInfo>(unitInfo.UnitId, unitInfo);
                         newUnit.AddComponent<ActorControlComponent>();
                         
                         Actor.Main = newUnit as Actor;
@@ -46,12 +46,12 @@ namespace AO
                     }
                     else
                     {
-                        newUnit = currentScene.AddChildWithId<Actor>(unitInfo.UnitId);
+                        newUnit = currentScene.AddChildWithId<Actor, UnitInfo>(unitInfo.UnitId, unitInfo);
                     }
                 }
                 else
                 {
-                    newUnit = currentScene.AddChildWithId<Actor>(unitInfo.UnitId);
+                    newUnit = currentScene.AddChildWithId<Actor, UnitInfo>(unitInfo.UnitId, unitInfo);
                     if (source is ExecutionEditorModeComponent mode)
                     {
                         mode.BossUnit = newUnit as Actor;

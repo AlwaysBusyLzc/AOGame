@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3753850848819528311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7051267662263756365}
   - component: {fileID: 3299383868446057493}
-  - component: {fileID: 8174897118937366486}
+  - component: {fileID: 3485784845079088169}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -205,7 +205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7051267662263756364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221,12 +221,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7051267662263756364}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86967feb5140137458d7b6e7a44fb44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationComponent: {fileID: 8174897118937366486}
+  AnimationComponent: {fileID: 0}
   MoveSpeed: 1
   AnimTime: 0.05
   AttackPrefab: {fileID: 453928607068391413, guid: ab9c12b4a40a2a249800ef30b3607ff1, type: 3}
@@ -240,7 +240,7 @@ MonoBehaviour:
   CureText: {fileID: 2775314110139268195, guid: 225c7ccd75271454fa9d6d87aedd0a78, type: 3}
   HealthBarImage: {fileID: 6743874234529955537}
   CanvasTrm: {fileID: 3753850848819528311}
---- !u!114 &8174897118937366486
+--- !u!114 &3485784845079088169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,10 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d5a122ac2081b458ca87d79a1b61a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimancerComponent: {fileID: 0}
+  AnimancerComponent: {fileID: 6870205646731141199}
   IdleAnimation: {fileID: 7400000, guid: 97459916597534b47a6cd5d9fd212540, type: 3}
   RunAnimation: {fileID: 7400000, guid: 8145575cbab627c478df040567a1a2c1, type: 3}
-  JumpAnimation: {fileID: 0}
+  JumpAnimation: {fileID: 7400000, guid: 6f81952372b06cf468354efc77feca8e, type: 3}
   AttackAnimation: {fileID: 7400000, guid: 01a77bd4c02fbb24081adc25c4773c07, type: 2}
   SkillAnimation: {fileID: 7400000, guid: ed975bcdf6dc9df488ada744ecc82be0, type: 3}
   StunAnimation: {fileID: 0}
@@ -408,3 +408,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1623442508, guid: 4d4319dde2f198845ac34608a1013ffc, type: 3}
   m_PrefabInstance: {fileID: 9211016689265649783}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &9211016687642242108 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1623442507, guid: 4d4319dde2f198845ac34608a1013ffc, type: 3}
+  m_PrefabInstance: {fileID: 9211016689265649783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9211016687642242110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1623442505, guid: 4d4319dde2f198845ac34608a1013ffc, type: 3}
+  m_PrefabInstance: {fileID: 9211016689265649783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6870205646731141199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211016687642242110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 9211016687642242108}
+  _ActionOnDisable: 0

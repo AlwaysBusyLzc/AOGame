@@ -11,14 +11,17 @@ using GameUtils;
 using Entity = EGamePlay.Entity;
 using Unity.Mathematics;
 using AO;
+using Log = ET.Log;
 
 public sealed class Hero : MonoBehaviour
 {
     public CombatEntity CombatEntity;
     public AnimationComponent AnimationComponent;
+    
     public float MoveSpeed = 1f;
     public float AnimTime = 0.05f;
     public GameTimer AnimTimer = new GameTimer(0.1f);
+    
     public GameObject AttackPrefab;
     public GameObject SkillEffectPrefab;
     public GameObject HitEffectPrefab;
@@ -26,6 +29,7 @@ public sealed class Hero : MonoBehaviour
     public Transform EquipmentPanelTrm;
     public Transform SkillSlotsTrm;
     public GameObject ItemPrefab;
+    
     public Text DamageText;
     public Text CureText;
     public UnityEngine.UI.Image HealthBarImage;
@@ -35,8 +39,10 @@ public sealed class Hero : MonoBehaviour
     private Tweener LookAtTweener { get; set; }
 
     public static Hero Instance { get; set; }
+    
     public Vector3 Position { get; set; }
     public Vector3 Rotation { get; set; }
+    
     public bool SkillPlaying { get; set; }
 
 
@@ -57,8 +63,10 @@ public sealed class Hero : MonoBehaviour
         CombatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
         CombatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
         CombatEntity.ListenActionPoint(ActionPointType.PostReceiveStatus, OnReceiveStatus);
+        
         CombatEntity.Subscribe<RemoveStatusEvent>(OnRemoveStatus);
         CombatEntity.Subscribe<AnimationClip>(OnPlayAnimation);
+        
         CombatEntity.CurrentHealth.Minus(30000);
 
 #if EGAMEPLAY_EXCEL
@@ -90,7 +98,15 @@ public sealed class Hero : MonoBehaviour
             {
                 continue;
             }
-            var config = GameUtils.AssetUtils.LoadObject<SkillConfigObject>($"SkillConfigs/Skill_{skilld}");
+
+            string configObjName = $"SkillConfigs/Skill_{skilld}_{skillConfig.Name}";
+            var config = GameUtils.AssetUtils.LoadObject<SkillConfigObject>(configObjName);
+            if (config == null)
+            {
+                Log.Warning($"asset {configObjName} not found");
+                continue;
+            }
+            
             var ability = CombatEntity.AttachSkill(config);
             if (skilld == 1001) CombatEntity.BindSkillInput(ability, KeyCode.Q);
             if (skilld == 1002) CombatEntity.BindSkillInput(ability, KeyCode.W);
