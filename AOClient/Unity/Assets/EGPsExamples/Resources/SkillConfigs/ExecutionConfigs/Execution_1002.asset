@@ -83,7 +83,7 @@ MonoBehaviour:
       FireType: 4
       ActionEventType: 0
       EffectApply: 0
-      EffectApplyTarget: 1
+      EffectApplyTarget: 0
       NewExecution: Execution_1008_Expllosion
     Shape: 0
     Radius: 1
