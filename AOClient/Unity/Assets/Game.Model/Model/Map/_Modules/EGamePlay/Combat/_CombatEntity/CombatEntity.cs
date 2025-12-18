@@ -22,6 +22,11 @@ namespace EGamePlay.Combat
         public Transform ModelTrans { get; set; }
         public HealthPointComponent CurrentHealth { get; private set; }
 
+        
+        //普攻能力实体
+        public AttackAbility AttackAbility { get; set; }
+        
+        
         //效果赋给行动能力
         public EffectAssignAbility EffectAssignAbility { get; private set; }
         //施法行动能力
@@ -41,12 +46,10 @@ namespace EGamePlay.Combat
         //起跳行动能力
         public JumpToActionAbility JumpToAbility { get; private set; }
         public CollisionActionAbility CollisionAbility { get; private set; }
-
-        //普攻能力
-        public AttackAbility AttackAbility { get; set; }
         //普攻格挡能力
         public AttackBlockActionAbility AttackBlockAbility { get; set; }
-
+        
+        
         //执行中的执行体
         public SkillExecution SpellingExecution { get; set; }
         //public Dictionary<string, SkillAbility> NameSkills { get; set; } = new Dictionary<string, SkillAbility>();
@@ -76,8 +79,10 @@ namespace EGamePlay.Combat
             CurrentHealth.HealthPointMaxNumeric = GetComponent<AttributeComponent>().HealthPointMax;
             CurrentHealth.Reset();
 
+            // 挂载普攻能力实体
             AttackAbility = GetComponent<AbilityComponent>().AttachAbility<AttackAbility>(null);
             
+            // 挂载所有行动能力
             AttackBlockAbility = AttachAction<AttackBlockActionAbility>();
             EffectAssignAbility = AttachAction<EffectAssignAbility>();
             SpellAbility = AttachAction<SpellActionAbility>();
@@ -112,21 +117,21 @@ namespace EGamePlay.Combat
         /// 挂载能力，技能、被动、buff等都通过这个接口挂载
         /// </summary>
         /// <param name="configObject"></param>
-        public T AttachAbility<T>(object configObject) where T : Entity, IAbilityEntity
-        {
-            var ability = this.AddChild<T>(configObject);
-            ability.AddComponent<AbilityLevelComponent>();
-            return ability;
-        }
+        // public T AttachAbility<T>(object configObject) where T : Entity, IAbilityEntity
+        // {
+        //     var ability = this.AddChild<T>(configObject);
+        //     ability.AddComponent<AbilityLevelComponent>();
+        //     return ability;
+        // }
 
         public T AttachAction<T>() where T : Entity, IActionAbility
         {
-            var action = AddChild<T>();
-            action.AddComponent<ActionComponent>();
-            action.Enable = true;
+            var actionAbility = AddChild<T>();
+            actionAbility.AddComponent<ActionComponent>();
+            actionAbility.Enable = true;
             //var action = AttachAbility<T>(null);
             //action.TryActivateAbility();
-            return action;
+            return actionAbility;
         }
 
         public SkillAbility AttachSkill(object configObject)

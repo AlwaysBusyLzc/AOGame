@@ -16,6 +16,7 @@ namespace EGamePlay.Combat
 
         public override void Awake()
         {
+            // 增加伤害吸血组件
             AddComponent<DamageBloodSuckComponent>();
         }
 
@@ -78,7 +79,7 @@ namespace EGamePlay.Combat
                 var Def = Target.GetComponent<AttributeComponent>().Defense.Value;
                 var coeff = Atk / (Atk + Def);
                 var Dam1 = Atk * coeff;
-                var Dam2 = (Atk + Atk) / (Atk + Def);
+                // var Dam2 = (Atk + Atk) / (Atk + Def);
                 //Dam3=力量*坚利*坚利/坚韧*坚韧
                 //坚利=武器品质
                 //破穿=术法品质

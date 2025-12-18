@@ -33,12 +33,6 @@ namespace EGamePlay.Combat
     /// </summary>
     public class EffectAssignAction : Entity, IActionExecute
     {
-        /// 创建这个效果赋给行动的源能力
-        public Entity SourceAbility { get; set; }
-        /// 目标行动
-        public IActionExecute TargetAction { get; set; }
-        public AbilityEffect AbilityEffect { get; set; }
-        public Effect EffectConfig => AbilityEffect.EffectConfig;
         /// 行动能力
         public Entity ActionAbility { get; set; }
         /// 效果赋给行动源
@@ -47,6 +41,14 @@ namespace EGamePlay.Combat
         public CombatEntity Creator { get; set; }
         /// 目标对象
         public Entity Target { get; set; }
+        
+        
+        /// 创建这个效果赋给行动的能力实体
+        public Entity SourceAbility { get; set; }
+        /// 目标行动
+        public IActionExecute TargetAction { get; set; }
+        public AbilityEffect AbilityEffect { get; set; }
+        public Effect EffectConfig => AbilityEffect.EffectConfig;
         /// 赋给目标
         public Entity AssignTarget { get; set; }
         /// 触发上下文
@@ -95,9 +97,11 @@ namespace EGamePlay.Combat
             {
                 foreach (var item in decorators)
                 {
+                    // 判断是否是触发新效果装饰器
                     if (item is TriggerNewEffectWhenAssignEffectDecorator effectDecorator)
                     {
-                        var newEffect = AbilityEffect.OwnerAbility.GetComponent<AbilityEffectComponent>().GetEffect(((int)effectDecorator.EffectApplyType) - 1);
+                        var newEffect = AbilityEffect.OwnerAbility.GetComponent<AbilityEffectComponent>().GetEffect(
+                            (int)effectDecorator.EffectApplyType - 1);
                         newEffect.TriggerObserver.OnTrigger(Target);
                     }
                 }

@@ -46,7 +46,8 @@ namespace AO
                 if (itemUnit.AbilityItem != null)
                 {
                     var clipData = itemUnit.AbilityItem.GetComponent<AbilityItemCollisionExecuteComponent>().ExecuteClipData;
-                    if (clipData.ExecuteClipType == EGamePlay.ExecuteClipType.CollisionExecute && clipData.CollisionExecuteData.ActionData.FireType == EGamePlay.FireType.CollisionTrigger)
+                    if (clipData.ExecuteClipType == EGamePlay.ExecuteClipType.CollisionExecute &&
+                        clipData.CollisionExecuteData.ActionData.FireType == EGamePlay.FireType.CollisionTrigger)
                     {
                         itemUnit.AbilityItem.OnTriggerEvent(otherUnit.Entity().GetComponent<UnitCombatComponent>().CombatEntity);
                         //otherUnit.Entity().GetComponent<AttributeHPComponent>().Available_HP -= 10;

@@ -27,9 +27,10 @@ namespace AO
         private static void OnPlayAnimation(this TComp self, AnimationClip animationClip)
         {
             ET.Log.Debug($"OnPlayAnimation {animationClip.name}");
-            self.animationComponent.PlayFade(animationClip);
+            // self.animationComponent.PlayFade(animationClip);
+            self.animationComponent.Play(animationClip);
         }
-        
+            
         
         public static async void Play(this TComp self, AnimationType animationType)
         {

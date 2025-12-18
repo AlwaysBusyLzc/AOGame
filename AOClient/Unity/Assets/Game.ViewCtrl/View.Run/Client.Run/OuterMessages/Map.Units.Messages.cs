@@ -13,6 +13,11 @@ namespace AO
                 AOGame.ClientApp.RemoveComponent<LobbyModeComponent>();
                 AOGame.ClientApp.AddComponent<MapModeComponent>();
             }
+
+            if (message.MapName == "ExecutionLinkScene")
+            {
+                AOGame.ClientApp.AddComponent<ExecutionEditorModeComponent>();
+            }
             await AOGame.ClientApp.GetComponent<MapModeComponent>().ChangeMapScene(message.MapName);
         }
 

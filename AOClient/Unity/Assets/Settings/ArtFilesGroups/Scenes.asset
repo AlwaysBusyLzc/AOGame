@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroupTargets:
   - {fileID: 102900000, guid: 6ea315d0fd7389c41b19996891e99ae3, type: 3}
+  - {fileID: 102900000, guid: eaec886ceb61dde46b924e7c1688467e, type: 3}
   GroupType: 0
   Filter: 

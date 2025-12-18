@@ -1047,11 +1047,11 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>E:\unity_editors\2021.3.45f2\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

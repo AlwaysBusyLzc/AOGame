@@ -4,7 +4,7 @@ using UnityEngine;
 namespace EGamePlay.Combat
 {
     /// <summary>
-    /// 
+    /// 技能实体组件，存储着角色所有的技能能力
     /// </summary>
     public class AbilityComponent : Component
     {

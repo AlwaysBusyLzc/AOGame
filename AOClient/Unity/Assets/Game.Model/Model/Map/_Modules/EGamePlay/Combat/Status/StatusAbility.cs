@@ -27,7 +27,9 @@ namespace ET
 
 namespace EGamePlay.Combat
 {
-
+    /// <summary>
+    /// 状态能力实体
+    /// </summary>
     public partial class StatusAbility : Entity, IAbilityEntity
     {
 #if !EGAMEPLAY_EXCEL
@@ -118,7 +120,8 @@ namespace EGamePlay.Combat
 #endif
         public Entity CreateExecution()
         {
-            var execution = OwnerEntity.AddChild<SkillExecution>(this);
+            // var execution = OwnerEntity.AddChild<SkillExecution>(this);
+            var execution = OwnerEntity.AddChild<StatusExecution>(this);
             execution.AddComponent<UpdateComponent>();
             return execution;
         }

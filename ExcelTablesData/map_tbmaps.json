@@ -12,5 +12,12 @@
     "type": "CopyMap1",
     "isCopyMap": 1,
     "desc": ""
+  },
+  {
+    "id": 10002,
+    "name": "技能编辑场景",
+    "type": "ExecutionLinkScene",
+    "isCopyMap": 0,
+    "desc": ""
   }
 ]

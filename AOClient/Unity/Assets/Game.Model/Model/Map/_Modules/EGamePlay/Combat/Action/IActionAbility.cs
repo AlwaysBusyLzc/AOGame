@@ -8,7 +8,7 @@ using UnityEngine;
 namespace EGamePlay.Combat
 {
     /// <summary>
-    /// 战斗行动能力
+    /// 行动能力接口
     /// </summary>
     public interface IActionAbility
     {

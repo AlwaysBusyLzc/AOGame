@@ -18,9 +18,9 @@ namespace EGamePlay.Combat
             {
                 return;
             }
-            foreach (var clip in GetEntity<SkillExecution>().ExecutionObject.ExecuteClips)
+            foreach (var clipData in GetEntity<SkillExecution>().ExecutionObject.ExecuteClips)
             {
-                var executeClip = Entity.AddChild<ExecuteClip>(clip);
+                var executeClip = Entity.AddChild<ExecuteClip>(clipData);
                 AddClip(executeClip);
             }
         }

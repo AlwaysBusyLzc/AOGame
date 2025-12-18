@@ -67,7 +67,8 @@ namespace ET
             var GateSessionId = player.GetComponent<GateSessionIdComponent>().GateSessionId;
 
             // 向中心世界服查询场景id
-            var getSceneMsg = new GetMapSceneRequest() { MapType = "Map1" };
+            // var getSceneMsg = new GetMapSceneRequest() { MapType = "Map1" };
+            var getSceneMsg = new GetMapSceneRequest() { MapType = "ExecutionLinkScene" };
             var getSceneResponse = await AOZone.GetAppCall<WorldServiceAppCall>().GetMapSceneRequest(getSceneMsg);
 
             var unitInfo = myAvatar.CreateUnitInfo();

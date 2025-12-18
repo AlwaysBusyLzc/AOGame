@@ -34,10 +34,7 @@ namespace EGamePlay.Combat
             execution.InputPoint = sourceExecution.InputPoint;
             execution.LoadExecutionEffects();
             execution.BeginExecute();
-            if (executionObject != null)
-            {
-                execution.AddComponent<UpdateComponent>();
-            }
+            execution.AddComponent<UpdateComponent>();
         }
     }
 }

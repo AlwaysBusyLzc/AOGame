@@ -16,7 +16,7 @@ MonoBehaviour:
   EndTime: 1
   ExecuteClipType: 2
   ActionEventData:
-    FireType: 0
+    FireType: 4
     ActionEventType: 0
     EffectApply: 0
     EffectApplyTarget: 0

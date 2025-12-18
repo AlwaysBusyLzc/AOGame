@@ -82,9 +82,9 @@ namespace EGamePlay.Combat
         [ToggleGroup("Enabled")/*, HideIf("IsSkillEffect", true)*/, LabelText("x="), ShowIf("EffectTriggerType", EffectTriggerType.Condition)]
         public string ConditionParam;
 
-        [FoldoutGroup("Enabled/TriggerType")]
-        [ToggleGroup("Enabled"), LabelText("状态判断"), HideInInspector]
-        public Dictionary<StateCheckType, string> StateChecks = new Dictionary<StateCheckType, string>();
+        // [FoldoutGroup("Enabled/TriggerType")]
+        // [ToggleGroup("Enabled"), LabelText("状态判断"), HideInInspector]
+        // public Dictionary<StateCheckType, string> StateChecks = new Dictionary<StateCheckType, string>();
 
         [FoldoutGroup("Enabled/TriggerType")]
         [ToggleGroup("Enabled"), LabelText("状态判断")]
@@ -106,12 +106,12 @@ namespace EGamePlay.Combat
 
         [ToggleGroup("Enabled")]
         [HorizontalGroup("Enabled/Hor2", PaddingLeft = 20, PaddingRight = 20)]
-        [HideLabel, OnValueChanged("AddEffect"), ValueDropdown("EffectTypeSelect"), PropertyOrder(101), JsonIgnore]
+        [HideLabel, OnValueChanged("AddEffectDecorator"), ValueDropdown("EffectDecoratorTypeSelect"), PropertyOrder(101), JsonIgnore]
         public string EffectTypeName = EffectTypeNameStr;
 
         public const string EffectTypeNameStr = "(添加修饰)";
 
-        public IEnumerable<string> EffectTypeSelect()
+        public IEnumerable<string> EffectDecoratorTypeSelect()
         {
             var types = typeof(EffectDecorator).Assembly.GetTypes()
                 .Where(x => !x.IsAbstract)
@@ -124,7 +124,7 @@ namespace EGamePlay.Combat
             return results;
         }
 
-        private void AddEffect()
+        private void AddEffectDecorator()
         {
             if (EffectTypeName != EffectTypeNameStr)
             {

@@ -9,10 +9,8 @@ namespace EGamePlay.Combat
     /// </summary>
     public interface IAbilityEntity
     {
-        /// 所有者
-        public CombatEntity OwnerEntity { get; set; }
-        /// 附着者，就是挂谁身上，像buff的所有者和附着者是不同的
-        public Entity ParentEntity { get; }
+        public CombatEntity OwnerEntity { get; set; }   /// 所有者
+        public Entity ParentEntity { get; }             /// 附着者，就是挂谁身上，像buff的所有者和附着者是不同的
         public bool Enable { get; set; }
 
 

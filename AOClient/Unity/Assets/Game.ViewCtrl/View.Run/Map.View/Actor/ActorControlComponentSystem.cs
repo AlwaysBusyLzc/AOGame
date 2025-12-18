@@ -24,10 +24,10 @@ namespace AO
         {
             protected override void Update(ActorControlComponent self)
             {
-                if (GRoot.inst.touchTarget != null)
-                {
-                    return;
-                }
+                // if (GRoot.inst.touchTarget != null)
+                // {
+                //     return;
+                // }
 
                 if (Input.GetMouseButtonDown(((int)MouseButton.RightMouse)))
                 {
@@ -46,10 +46,19 @@ namespace AO
                     //Log.Debug($"GetMouseButtonUp {MouseButton.LeftMouse}");
                     if (RaycastUtils.CastMapPoint(out var hitPoint))
                     {
-                        AvatarCall.C2M_SpellRequest(new C2M_SpellRequest() { CastPoint = hitPoint, SkillId = 1002 }).Coroutine();
+                        // AvatarCall.C2M_SpellRequest(new C2M_SpellRequest() { CastPoint = hitPoint, SkillId = 1002 }).Coroutine();
                     }               
                 }
 
+                // // 如果按下组合按键 alt + s
+                // if (Input.GetKeyDown(KeyCode.S))
+                // {
+                //     Log.Debug("切换到技能编辑场景");
+                //     // 切换到技能编辑场景
+                //     //AOGame.ClientApp.GetComponent<MapModeComponent>().ChangeMapScene("ExecutionLinkScene");
+                //     // 向服务端请求切换到技能编辑场景
+                // }
+                
                 //var h = Input.GetAxis("Horizontal");
                 //var v = Input.GetAxis("Vertical");
             }

@@ -40,9 +40,9 @@ namespace AO
                         newUnit.AddComponent<ActorControlComponent>();
                         
                         Actor.Main = newUnit as Actor;
-                        Actor.Main.AddComponent<AttributeHPComponent>();
-                        Actor.Main.GetComponent<AttributeHPComponent>().AvailableValue = 100;
-                        Actor.Main.GetComponent<AttributeHPComponent>().AttributeValue = 100;
+                        // Actor.Main.AddComponent<AttributeHPComponent>();
+                        // Actor.Main.GetComponent<AttributeHPComponent>().AvailableValue = 100;
+                        // Actor.Main.GetComponent<AttributeHPComponent>().AttributeValue = 100;
                     }
                     else
                     {
@@ -52,12 +52,13 @@ namespace AO
                 else
                 {
                     newUnit = currentScene.AddChildWithId<Actor, UnitInfo>(unitInfo.UnitId, unitInfo);
-                    if (source is ExecutionEditorModeComponent mode)
+                    if (source is ExecutionEditorModeComponent ||
+                        currentScene.Type == "ExecutionLinkScene")
                     {
-                        mode.BossUnit = newUnit as Actor;
-                        mode.BossUnit.AddComponent<AttributeHPComponent>();
-                        mode.BossUnit.GetComponent<AttributeHPComponent>().AvailableValue = 100;
-                        mode.BossUnit.GetComponent<AttributeHPComponent>().AttributeValue = 100;
+                        AOGame.ClientApp.GetComponent<ExecutionEditorModeComponent>().BossUnit = newUnit as Actor;
+                        // mode.BossUnit.AddComponent<AttributeHPComponent>();
+                        // mode.BossUnit.GetComponent<AttributeHPComponent>().AvailableValue = 100;
+                        // mode.BossUnit.GetComponent<AttributeHPComponent>().AttributeValue = 100;
                     }
                 }
 

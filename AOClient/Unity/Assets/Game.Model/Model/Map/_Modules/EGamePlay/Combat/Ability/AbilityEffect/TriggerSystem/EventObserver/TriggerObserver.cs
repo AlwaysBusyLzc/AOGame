@@ -12,6 +12,7 @@ namespace EGamePlay.Combat
     {
         public void OnTrigger(Entity source)
         {
+            //Log.Debug("TriggerObserver OnTrigger");
             GetParent<AbilityEffect>().OnObserverTrigger(new TriggerContext(this, source));
         }
 
@@ -21,8 +22,9 @@ namespace EGamePlay.Combat
             {
                 Observer = this,
                 Source = abilityItem,
-                AbilityItem = abilityItem,
                 Target = target,
+                
+                AbilityItem = abilityItem,
             };
             GetParent<AbilityEffect>().OnObserverTrigger(context);
         }

@@ -6,6 +6,8 @@ using UnityEditor;
 using System.IO;
 using EGamePlay.Combat;
 using AO;
+using ET;
+using Object = UnityEngine.Object;
 
 namespace EGamePlay
 {
@@ -74,7 +76,7 @@ namespace EGamePlay
             SkillTimeImage.fillAmount = 0;
             TimeCursorTrm.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, 0);
 
-            PlayButton.onClick.AddListener(PlaySkillExecution);
+            // PlayButton.onClick.AddListener(PlaySkillExecution);
 
             NewExecutionBtn.onClick.AddListener(NewExecutionAsset);
             AddClipBtn.onClick.AddListener(AddClipAsset);
@@ -112,13 +114,18 @@ namespace EGamePlay
                 if (SkillTimeImage.fillAmount >= 1)
                 {
                     IsPlaying = false;
-                    PlayButton.GetComponentInChildren<Text>().text = "≤•∑≈";
+                    PlayButton.GetComponentInChildren<Text>().text = "Êí≠Êîæ";
                 }
             }
 
             if (Input.GetMouseButtonUp((int)UnityEngine.UIElements.MouseButton.LeftMouse))
             {
                 RightContextTrm.gameObject.SetActive(false);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                PlaySkillExecution();
             }
         }
 
@@ -234,7 +241,7 @@ namespace EGamePlay
             self.TotalTime = (float)CurrentExecutionObject.TotalTime;
 
             //self.SkillNameText.text = $"{cast.Id}_{cast.Name}";
-            //self.SkillTimeImage.GetComponentInChildren<Text>().text = $"{self.TotalTime}√Î";
+            //self.SkillTimeImage.GetComponentInChildren<Text>().text = $"{self.TotalTime}Áßí";
 
             foreach (var item in CurrentExecutionObject.ExecuteClips)
             {
@@ -420,6 +427,7 @@ namespace EGamePlay
         {
             if (CurrentExecutionObject == null)
             {
+                ET.Log.Warning("ËØ∑ÂÖàÈÄâ‰∏≠ÊäÄËÉΩ");
                 return;
             }
 
@@ -427,6 +435,24 @@ namespace EGamePlay
             SkillTimeImage.fillAmount = 0;
             CurrentTime = 0;
             IsPlaying = true;
+
+
+            var spellSkillMsg = new C2M_SpellRequest() { SkillId = CurrentExecutionObject.AbilityId };
+            if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Point)
+            {
+                if (RaycastUtils.CastMapPoint(out var hitPoint))
+                {
+                    spellSkillMsg.CastPoint = hitPoint;
+                }
+            }
+            else if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Target)
+            {
+                spellSkillMsg.CastTargetId = BossEntity.InstanceId;
+            }
+            AvatarCall.C2M_SpellRequest(spellSkillMsg).Coroutine();
+            
+            return;
+            
             if (CurrentExecutionObject.AbilityId > 0 && HeroEntity.GetComponent<AbilityComponent>().IdSkills.TryGetValue(CurrentExecutionObject.AbilityId, out SkillAbility skillAbility))
             {
                 skillAbility.LoadExecution();
@@ -443,14 +469,25 @@ namespace EGamePlay
                 }
                 if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Point)
                 {
-                    // ªÚ’ﬂ∏ƒ≥… Û±ÍÀ˘‘⁄µ„?
+                    // ÊàñËÄÖÊîπÊàêÈº†Ê†áÊâÄÂú®ÁÇπ?
                     HeroEntity.GetComponent<SpellComponent>().SpellWithPoint(skillAbility, BossEntity.Position);
                 }
             }
             else
             {
                 HeroEntity.ModelTrans.localRotation = Quaternion.LookRotation(BossEntity.Position - HeroEntity.Position);
-                var skillAb = HeroEntity.AttachSkill(new SkillConfigObject() { Id = CurrentExecutionObject.AbilityId });
+                
+                var skillCfg = CfgTables.Tables.TbSkills.Get(CurrentExecutionObject.AbilityId);
+                string skillCfgObjPath = $"SkillConfigs/Skill_{skillCfg.Id}_{skillCfg.Name}";
+                var skillObjCfg = GameUtils.AssetUtils.LoadObject<SkillConfigObject>(skillCfgObjPath);
+                if (skillObjCfg == null)
+                {
+                    Log.Error($"asset {skillCfgObjPath} not found");
+                    return;
+                }
+                
+                // var skillAb = HeroEntity.AttachSkill(new SkillConfigObject() { Id = CurrentExecutionObject.AbilityId });
+                var skillAb = HeroEntity.AttachSkill(skillObjCfg);
                 if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Target)
                 {
                     var execution = HeroEntity.AddChild<SkillExecution>(skillAb);

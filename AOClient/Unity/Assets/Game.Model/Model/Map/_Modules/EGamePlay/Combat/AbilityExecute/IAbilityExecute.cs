@@ -11,8 +11,8 @@ namespace EGamePlay.Combat
     /// </summary>
     public interface IAbilityExecute
     {
-        public Entity AbilityEntity { get; set; }
-        public CombatEntity OwnerEntity { get; set; }
+        public Entity AbilityEntity { get; set; }           // 能力实体
+        public CombatEntity OwnerEntity { get; set; }       // 能力实体所有者
 
 
         /// 开始执行

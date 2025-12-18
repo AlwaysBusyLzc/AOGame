@@ -23,9 +23,9 @@ namespace EGamePlay.Combat
     /// </summary>
     public class AbilityItem : Entity, IPosition
     {
-        public Entity AbilityEntity { get; private set; }
-        public IAbilityExecute AbilityExecution { get; private set; }
-        public EffectApplyType EffectApplyType { get; set; }
+        public Entity AbilityEntity { get; private set; }           // 能力实体
+        public IAbilityExecute AbilityExecution { get; private set; }           // 能力执行体
+        public EffectApplyType EffectApplyType { get; set; }            // 应用效果类型            
         public Vector3 LocalPosition { get; set; }
         public Vector3 Position { get; set; }
         public Quaternion Rotation { get; set; }
@@ -55,6 +55,7 @@ namespace EGamePlay.Combat
             AddComponent<AbilityComponent>();
             AddComponent<StatusComponent>();
 
+            // 获取所有的能力效果
             var abilityEffects = AbilityEntity.GetComponent<AbilityEffectComponent>().AbilityEffects;
             foreach (var abilityEffect in abilityEffects)
             {
@@ -83,7 +84,8 @@ namespace EGamePlay.Combat
         {
             var clipData = GetComponent<AbilityItemCollisionExecuteComponent>().ExecuteClipData;
             //Log.Debug($"AbilityItem OnDestroy {clipData.ExecuteClipType} {clipData.CollisionExecuteData.ActionData.FireType}");
-            if (clipData.ExecuteClipType == ExecuteClipType.CollisionExecute && clipData.CollisionExecuteData.ActionData.FireType == FireType.EndTrigger)
+            if (clipData.ExecuteClipType == ExecuteClipType.CollisionExecute &&
+                clipData.CollisionExecuteData.ActionData.FireType == FireType.EndTrigger)
             {
                 OnTriggerEvent(null);
             }
@@ -94,6 +96,10 @@ namespace EGamePlay.Combat
             }
         }
 
+        /// <summary>
+        /// 触发碰撞事件 触发效果
+        /// </summary>
+        /// <param name="otherEntity"></param>
         public void OnTriggerEvent(Entity otherEntity)
         {
             if (IsDisposed)
@@ -106,6 +112,7 @@ namespace EGamePlay.Combat
                 var otherCombatEntity = otherEntity as CombatEntity;
                 if (otherCombatEntity != null)
                 {
+                    // 传入的目标参数与能力单元体的目标参数不一致  返回
                     if (otherCombatEntity != TargetEntity)
                     {
                         return;
@@ -114,15 +121,14 @@ namespace EGamePlay.Combat
                 else
                 {
                     var otherItem = otherEntity as AbilityItem;
-
                 }
             }
 
             var collisionExecuteData = GetComponent<AbilityItemCollisionExecuteComponent>().CollisionExecuteData;
-            if (AbilityEntity != null)
+            Log.Debug($"AbilityItem OnTriggerEvent {collisionExecuteData.ActionData.ActionEventType}");
+            if (collisionExecuteData.ActionData.ActionEventType == FireEventType.AssignEffect)
             {
-                Log.Debug($"AbilityItem OnTriggerEvent {collisionExecuteData.ActionData.ActionEventType}");
-                if (collisionExecuteData.ActionData.ActionEventType == FireEventType.AssignEffect)
+                if (AbilityEntity != null)
                 {
                     var effects = AbilityEntity.GetComponent<AbilityEffectComponent>().AbilityEffects;
                     for (int i = 0; i < effects.Count; i++)
@@ -132,18 +138,26 @@ namespace EGamePlay.Combat
                             var effect = effects[i];
                             if (effect.TriggerObserver != null)
                             {
+                                // 触发效果
                                 effect.TriggerObserver.OnTriggerWithAbilityItem(this, otherEntity);
                             }
                         }
                     }
                 }
-            }
-
-            if (AbilityExecution != null)
-            {
-                if (collisionExecuteData.ActionData.ActionEventType == FireEventType.TriggerNewExecution)
+                else
                 {
-                    OnTriggerNewExecution(collisionExecuteData.ActionData);
+                    Log.Debug($"AbilityItem AssignEffect AbilityEntity is null");
+                }
+            }
+            else if (collisionExecuteData.ActionData.ActionEventType == FireEventType.TriggerNewExecution)
+            {
+                if (AbilityExecution != null)
+                {
+                    OnTriggerNewExecution(collisionExecuteData.ActionData);    
+                }
+                else
+                {
+                    Log.Debug($"AbilityItem TriggerNewExecution AbilityExecution is null");
                 }
             }
 
@@ -332,6 +346,8 @@ namespace EGamePlay.Combat
             {
                 itemUnit.ConfigId = AbilityEntity.As<SkillAbility>().SkillConfig.Id;
             }
+            
+            /// 此处碰撞形状和参数应该读取配置
             itemUnit.AddComponent<UnitCollisionComponent>().Radius = 2;
             var moveComp = abilityItem.GetComponent<AbilityItemPathMoveComponent>();
             if (moveComp != null)
@@ -342,10 +358,10 @@ namespace EGamePlay.Combat
                 itemUnit.GetComponent<UnitPathMoveComponent>().Speed = moveComp.Speed;
                 itemUnit.GetComponent<UnitPathMoveComponent>().PathPoints = points.ToList();
                 var lifeTime = abilityItem.GetComponent<LifeTimeComponent>().LifeTimer.MaxTime * 1000;
-                AOGame.PublishServer(new PublishNewUnitEvent() { Unit = itemUnit.MapUnit() });
 #if UNITY
                 AOGame.Publish(new CreateUnit() { MapUnit = itemUnit, IsMainAvatar = false });
 #endif
+                AOGame.PublishServer(new PublishNewUnitEvent() { Unit = itemUnit.MapUnit() });
                 if (points != null)
                 {
                     AOGame.Publish(new UnitPathMoveEvent() { Unit = itemUnit.MapUnit(), PathPoints = points, ArriveTime = (long)(TimeHelper.ServerNow() + lifeTime) });

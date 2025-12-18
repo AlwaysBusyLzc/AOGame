@@ -21,11 +21,15 @@ namespace EGamePlay.Combat
             if (CollisionExecuteData.ActionData.ActionEventType == FireEventType.AssignEffect)
             {
                 GetEntity<AbilityItem>().EffectApplyType = CollisionExecuteData.ActionData.EffectApply;
+                
+                // 如果是初始触发
                 if (CollisionExecuteData.ActionData.FireType == FireType.StartTrigger)
                 {
+                    // 如果触发目标是自己
                     if (CollisionExecuteData.ActionData.EffectApplyTarget == EffectApplyTarget.Self)
                     {
                         GetEntity<AbilityItem>().OnTriggerEvent(GetEntity<AbilityItem>());
+                        //GetEntity<AbilityItem>().OnTriggerEvent(otherUnit.Entity().GetComponent<UnitCombatComponent>().CombatEntity);
                     }
                 }
             }

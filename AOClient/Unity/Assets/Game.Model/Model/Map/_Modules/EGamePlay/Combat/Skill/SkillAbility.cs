@@ -11,16 +11,25 @@ using AO;
 #if !EGAMEPLAY_EXCEL
 namespace EGamePlay.Combat
 {
+    /// <summary>
+    ///  技能能力实体
+    /// </summary>
     public partial class SkillAbility : Entity, IAbilityEntity
     {
         public CombatEntity OwnerEntity { get { return GetParent<CombatEntity>(); } set { } }
         public Entity ParentEntity { get => Parent; }
         public bool Enable { get; set; }
+        
         public SkillConfigObject SkillEffectsConfig { get; set; }
         public SkillConfig SkillConfig { get; set; }
         public bool Spelling { get; set; }
         public GameTimer CooldownTimer { get; } = new GameTimer(1f);
+        
+        /// <summary>
+        ///  子状态列表
+        /// </summary>
         private List<StatusAbility> ChildrenStatuses { get; set; } = new List<StatusAbility>();
+        
         public ExecutionObject ExecutionObject { get; set; }
 
 
@@ -79,7 +88,10 @@ namespace EGamePlay.Combat
             }
 
             Name = this.SkillConfig.Name;
+            
+            //  添加能力效果组件
             AddComponent<AbilityEffectComponent>(SkillEffectsConfig.Effects);
+            //  加载执行对象资源
             LoadExecution();
             //if (SkillEffectsConfig.SkillSpellType == SkillSpellType.Passive)
             {

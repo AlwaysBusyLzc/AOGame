@@ -7,10 +7,16 @@ namespace EGamePlay.Combat
     /// </summary>
     public class ActionPointObserver : Entity, ICombatObserver
     {
+        public void OnTrigger(Entity source)
+        {
+            //Log.Debug("ActionPointObserver OnTrigger");
+            GetParent<AbilityEffect>().OnObserverTrigger(new TriggerContext(this, source));
+        }
+        
         public override void Awake()
         {
             var abilityEffect = GetParent<AbilityEffect>();
-            var combatEntity = abilityEffect.OwnerAbility.As<IAbilityEntity>().ParentEntity;
+            var combatEntity = abilityEffect.OwnerAbility.As<IAbilityEntity>().ParentEntity;        // 附着者实体
             combatEntity.GetComponent<ActionPointComponent>().AddObserver(abilityEffect.EffectConfig.ActionPointType, this);
         }
 
@@ -19,13 +25,6 @@ namespace EGamePlay.Combat
             var abilityEffect = GetParent<AbilityEffect>();
             var combatEntity = abilityEffect.OwnerAbility.As<IAbilityEntity>().ParentEntity;
             combatEntity.GetComponent<ActionPointComponent>().RemoveObserver(abilityEffect.EffectConfig.ActionPointType, this);
-        }
-
-        public void OnTrigger(Entity source)
-        {
-            //Log.Debug("ActionPointObserver OnTrigger");
-            var abilityEffect = GetParent<AbilityEffect>();
-            abilityEffect.OnObserverTrigger(new TriggerContext(this, source));
         }
     }
 }

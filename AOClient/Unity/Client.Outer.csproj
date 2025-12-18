@@ -805,11 +805,11 @@
     <Reference Include="Unity.Mathematics">
       <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>D:\workspace\unity_projects\AOGame\AOClient\Unity\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>

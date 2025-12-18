@@ -8,11 +8,17 @@ namespace EGamePlay.Combat
     //public class ApplyEffectEvent { public AbilityEffect AbilityEffect; }
     //public enum EffectSourceType { Ability, Execution }
 
+    /// <summary>
+    /// 能力效果触发系统接口
+    /// </summary>
     public interface IEffectTriggerSystem
     {
         void OnTriggerApplyEffect(Entity effectAssign);
     }
-
+    
+    /// <summary>
+    /// 效果触发上下文
+    /// </summary>
     public struct TriggerContext
     {
         public TriggerContext(ICombatObserver observer, Entity source)
@@ -25,8 +31,8 @@ namespace EGamePlay.Combat
 
         public ICombatObserver Observer;
         public Entity Source;
-        public AbilityItem AbilityItem;
         public Entity Target;
+        public AbilityItem AbilityItem;
     }
 
     /// <summary>
@@ -35,11 +41,11 @@ namespace EGamePlay.Combat
     public partial class AbilityEffect : Entity
     {
         public bool Enable { get; set; }
-        public Entity OwnerAbility => Parent;
-        public CombatEntity OwnerEntity => (OwnerAbility as IAbilityEntity).OwnerEntity;
-        public Entity ParentEntity => (OwnerAbility as IAbilityEntity).ParentEntity;
+        public Entity OwnerAbility => Parent;       // 能力实体
+        public CombatEntity OwnerEntity => (OwnerAbility as IAbilityEntity).OwnerEntity;  // 能力实体的所有者
+        public Entity ParentEntity => (OwnerAbility as IAbilityEntity).ParentEntity;      // 能力实体的挂载实体
         public Effect EffectConfig { get; set; }
-        public string ConditionParamValue { get; set; }
+        public string ConditionParamValue { get; set; }            // 条件参数
         //public EffectSourceType EffectSourceType { get; set; }
         public TriggerObserver TriggerObserver { get; set; }
 
@@ -81,6 +87,7 @@ namespace EGamePlay.Combat
             Enable = true;
             if (EffectConfig.EffectTriggerType != EffectTriggerType.None)
             {
+                // 启用所有组件， 例如伤害触发组件， 治疗触发组件...
                 foreach (var item in Components.Values)
                 {
                     item.Enable = true;
@@ -92,15 +99,16 @@ namespace EGamePlay.Combat
             {
                 if (EffectConfig.EffectTriggerType == EffectTriggerType.None || EffectConfig.EffectTriggerType == EffectTriggerType.Instant)
                 {
+                    // 增加主动触发观察者
                     TriggerObserver = AddChild<TriggerObserver>();
                 }
-
-                if (EffectConfig.EffectTriggerType == EffectTriggerType.Action)
+                else if (EffectConfig.EffectTriggerType == EffectTriggerType.Action)
                 {
                     //Log.Debug("EnableEffect ActionPointObserver");
+                    // 增加行动点触发观察者
                     AddChild<ActionPointObserver>();
                 }
-                if (EffectConfig.EffectTriggerType == EffectTriggerType.Condition)
+                else if (EffectConfig.EffectTriggerType == EffectTriggerType.Condition)
                 {
                     var conditionType = EffectConfig.ConditionType;
                     var paramObj = ConditionParamValue;
@@ -120,6 +128,7 @@ namespace EGamePlay.Combat
                 {
                     foreach (var item in Children)
                     {
+                        // 观察触发实体增加条件检查组件
                         if (item is ICombatObserver)
                         {
                             item.AddComponent<EffectStateCheckComponent>();
@@ -161,6 +170,7 @@ namespace EGamePlay.Combat
             var stateCheckResult = true;
             if (!(observer is ActionPointObserver) && !(observer is TriggerObserver))
             {
+                // 如果触发观察者不是行动点触发 也不是主动触发， 则目标设置为挂载能力实体的战斗实体
                 target = ParentEntity;
             }
 
@@ -176,7 +186,7 @@ namespace EGamePlay.Combat
                 if (OwnerEntity.EffectAssignAbility.TryMakeAction(out var effectAssign))
                 {
                     effectAssign.AssignTarget = target;
-                    effectAssign.SourceAbility = OwnerAbility;
+                    effectAssign.SourceAbility = OwnerAbility;      // 能力实体
                     effectAssign.AbilityEffect = this;
                     effectAssign.TriggerContext = context;
                     effectAssign.AssignEffect();

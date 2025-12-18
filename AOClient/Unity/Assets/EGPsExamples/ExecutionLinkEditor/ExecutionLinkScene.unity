@@ -1023,7 +1023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &243098644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,7 +1401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &279126965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3438,7 +3438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &596063152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4400,7 +4400,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 120, y: 60}
+  m_SizeDelta: {x: 280, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890127651
 MonoBehaviour:
@@ -4818,7 +4818,7 @@ GameObject:
   - component: {fileID: 967613868}
   - component: {fileID: 967613867}
   - component: {fileID: 967613866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5002,7 +5002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &979868365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5721,7 +5721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1282932487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6216,7 +6216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1334363438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7723,7 +7723,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u64AD\u653E"
+  m_Text: "\u6309\u4E0B\u7A7A\u683C\u952E\u6267\u884C\u6280\u80FD"
 --- !u!222 &1639762678
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7916,7 +7916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1745344418
 MonoBehaviour:
   m_ObjectHideFlags: 0
