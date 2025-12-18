@@ -435,8 +435,7 @@ namespace EGamePlay
             SkillTimeImage.fillAmount = 0;
             CurrentTime = 0;
             IsPlaying = true;
-
-
+            
             var spellSkillMsg = new C2M_SpellRequest() { SkillId = CurrentExecutionObject.AbilityId };
             if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Point)
             {
@@ -447,7 +446,8 @@ namespace EGamePlay
             }
             else if (CurrentExecutionObject.TargetInputType == ExecutionTargetInputType.Target)
             {
-                spellSkillMsg.CastTargetId = BossEntity.InstanceId;
+                // unitId 传给服务器
+                spellSkillMsg.CastTargetId = BossEntity.GetComponent<CombatUnitComponent>().Unit.Id;
             }
             AvatarCall.C2M_SpellRequest(spellSkillMsg).Coroutine();
             
