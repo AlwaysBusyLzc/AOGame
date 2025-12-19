@@ -3,7 +3,12 @@ namespace AO
     using ET;
     using Sirenix.OdinInspector;
     using System.Collections.Generic;
+    
+#if EGAMEPLAY_ET
+    using Vector3 = Unity.Mathematics.float3;
+#endif
 
+    
     [LabelText("Åö×²ÌåÐÎ×´")]
     public enum CollisionShape
     {
@@ -23,6 +28,8 @@ namespace AO
         [NotifyAOI]
         public CollisionShape CollisionShape { get; set; } = CollisionShape.Sphere;
         [NotifyAOI]
-        public float Radius { get; set; } = 1f;
+        public float Radius { get; set; }
+        public Vector3 Center { get; set; }
+        public Vector3 Size { get; set; }
     }
 }

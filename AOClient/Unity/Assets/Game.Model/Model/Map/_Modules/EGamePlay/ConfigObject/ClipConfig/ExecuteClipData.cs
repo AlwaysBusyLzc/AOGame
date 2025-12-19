@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AO;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using EGamePlay.Combat;
@@ -166,7 +167,7 @@ namespace EGamePlay
         [Space(10)]
         public CollisionShape Shape;
         [ShowIf("Shape", CollisionShape.Sphere), LabelText("°ë¾¶")]
-        public double Radius;
+        public float Radius;
 
         [ShowIf("Shape", CollisionShape.Box)]
         public Vector3 Center;
@@ -184,7 +185,7 @@ namespace EGamePlay
         public GameObject ObjAsset;
 
         [ShowIf("ShowSpeed")]
-        public double Speed = 1;
+        public float Speed = 1;
         public bool ShowSpeed { get => MoveType != CollisionMoveType.FixedPosition && MoveType != CollisionMoveType.SelectedPosition && MoveType != CollisionMoveType.SelectedDirection; }
         public bool ShowPoints { get => MoveType == CollisionMoveType.PathFly || MoveType == CollisionMoveType.SelectedDirectionPathFly; }
         [ShowIf("ShowPoints")]

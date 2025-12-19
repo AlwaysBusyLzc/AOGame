@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExecuteClip
   m_EditorClassIdentifier: 
   StartTime: 0
-  EndTime: 1
+  EndTime: 1.2000000476837158
   ExecuteClipType: 2
   ActionEventData:
     FireType: 4
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: ExecuteClip
   m_EditorClassIdentifier: 
   StartTime: 0
-  EndTime: 1.1352845430374146
+  EndTime: 1.000000015894571
   ExecuteClipType: 0
   ActionEventData:
     FireType: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: Execution_1002
   m_EditorClassIdentifier: 
   AbilityId: 1002
-  TotalTime: 2
+  TotalTime: 1.2
   ObjAsset: {fileID: 0}
   TargetInputType: 2
   RangeIndicatorObjAsset: {fileID: 0}

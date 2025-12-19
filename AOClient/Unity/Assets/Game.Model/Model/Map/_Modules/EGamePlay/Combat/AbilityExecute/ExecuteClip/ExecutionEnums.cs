@@ -2,18 +2,18 @@
 using Sirenix.OdinInspector;
 #endif
 
-[LabelText("碰撞体形状")]
-public enum CollisionShape
-{
-    [LabelText("圆形")]
-    Sphere,
-    [LabelText("矩形")]
-    Box,
-    [LabelText("扇形")]
-    Sector,
-    [LabelText("自定义")]
-    Custom,
-}
+// [LabelText("碰撞体形状")]
+// public enum CollisionShape
+// {
+//     [LabelText("圆形")]
+//     Sphere,
+//     [LabelText("矩形")]
+//     Box,
+//     [LabelText("扇形")]
+//     Sector,
+//     [LabelText("自定义")]
+//     Custom,
+// }
 
 [LabelText("碰撞体执行类型")]
 public enum CollisionMoveType

@@ -89,6 +89,12 @@ namespace AO
                     var value = ProtobufHelper.Deserialize(property.PropertyType, message.PropertyBytes, 0, message.PropertyBytes.Length);
                     property.SetValue(kv.Value, value);
                     Log.Debug($"{unit.GetType().FullName} {property.Name} {value}");
+                    
+                    if (message.ComponentName == "AO.AttributeHPComponent")
+                    {
+                        unit.GetComponent<UnitPanelComponent>().SetHP((int)value);
+                    }
+                    
                     break;
                 }
             }

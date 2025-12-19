@@ -347,8 +347,13 @@ namespace EGamePlay.Combat
                 itemUnit.ConfigId = AbilityEntity.As<SkillAbility>().SkillConfig.Id;
             }
             
-            /// 此处碰撞形状和参数应该读取配置
-            itemUnit.AddComponent<UnitCollisionComponent>().Radius = 2;
+            /// 碰撞形状和参数读取配置
+            var collisionExecuteData = GetComponent<AbilityItemCollisionExecuteComponent>().CollisionExecuteData;
+            itemUnit.AddComponent<UnitCollisionComponent>().CollisionShape = collisionExecuteData.Shape;
+            itemUnit.GetComponent<UnitCollisionComponent>().Radius = collisionExecuteData.Radius;
+            itemUnit.GetComponent<UnitCollisionComponent>().Center = collisionExecuteData.Center;
+            itemUnit.GetComponent<UnitCollisionComponent>().Size = collisionExecuteData.Size;
+            
             var moveComp = abilityItem.GetComponent<AbilityItemPathMoveComponent>();
             if (moveComp != null)
             {

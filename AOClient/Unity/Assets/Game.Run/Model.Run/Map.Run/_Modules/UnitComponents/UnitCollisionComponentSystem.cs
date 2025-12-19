@@ -45,7 +45,8 @@ namespace AO
             {
                 if (itemUnit.AbilityItem != null)
                 {
-                    var clipData = itemUnit.AbilityItem.GetComponent<AbilityItemCollisionExecuteComponent>().ExecuteClipData;
+                    var collisionExecuteComponent = itemUnit.AbilityItem.GetComponent<AbilityItemCollisionExecuteComponent>();
+                    var clipData = collisionExecuteComponent.ExecuteClipData;
                     if (clipData.ExecuteClipType == EGamePlay.ExecuteClipType.CollisionExecute &&
                         clipData.CollisionExecuteData.ActionData.FireType == EGamePlay.FireType.CollisionTrigger)
                     {
