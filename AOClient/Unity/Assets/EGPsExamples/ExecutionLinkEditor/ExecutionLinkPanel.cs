@@ -117,15 +117,17 @@ namespace EGamePlay
                     PlayButton.GetComponentInChildren<Text>().text = "播放";
                 }
             }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    PlaySkillExecution();
+                }
+            }
 
             if (Input.GetMouseButtonUp((int)UnityEngine.UIElements.MouseButton.LeftMouse))
             {
                 RightContextTrm.gameObject.SetActive(false);
-            }
-            
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PlaySkillExecution();
             }
         }
 
@@ -423,7 +425,7 @@ namespace EGamePlay
             trackClip.SetClipType(trackClipData);
         }
 
-        public void PlaySkillExecution()
+        public async void PlaySkillExecution()
         {
             if (CurrentExecutionObject == null)
             {
@@ -449,7 +451,12 @@ namespace EGamePlay
                 // unitId 传给服务器
                 spellSkillMsg.CastTargetId = BossEntity.GetComponent<CombatUnitComponent>().Unit.Id;
             }
-            AvatarCall.C2M_SpellRequest(spellSkillMsg).Coroutine();
+            var res = await AvatarCall.C2M_SpellRequest(spellSkillMsg);
+            // 如果技能释放成功
+            if (res.Error == ErrorCode.ERR_Success)
+            {
+                
+            }
             
             return;
             
