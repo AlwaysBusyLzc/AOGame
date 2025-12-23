@@ -138,6 +138,16 @@ message M2C_SpellResponse // IActorLocationResponse
 	string Message = 3;
 }
 
+mesage M2C_SpellBroadcast // IActorMessage
+{
+	int32 Error = 1;
+	int64 UnitId = 2;
+	int32 SkillId = 3;
+	Unity.Mathematics.float3 CastPoint = 4;
+	int64 CastTargetId = 5;
+}
+
+
 message M2C_SpellStart // IActorMessage
 {
 	int32 Error = 1;
